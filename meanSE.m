@@ -23,7 +23,7 @@ function matrix = meanSE(matrix,dimension)
             length = size(matrix,1);
             matrix = [matrix;addition];
             for it = 1:size(matrix,2)
-                matrix(length+1,it) = mean(matrix(:,it));
+                matrix(length+1,it) = mean(matrix(1:length,it));
                 matrix(length+2,it) = std(matrix(1:length,it)) / sqrt(length);
             end
             
@@ -33,7 +33,7 @@ function matrix = meanSE(matrix,dimension)
             length = size(matrix,2);
             matrix = [matrix,addition];
             for it = 1:size(matrix,1)
-                matrix(it,length+1) = mean(matrix(it,:));
+                matrix(it,length+1) = mean(matrix(it,1:length));
                 matrix(it,length+2) = std(matrix(it,1:length)) / sqrt(length);
             end
     end
